@@ -1,0 +1,41 @@
+package mejorado2;
+
+import JavaApplication2.JavaApplication2;
+import java.util.concurrent.TimeUnit;
+
+import com.google.common.base.Stopwatch;
+
+public class meojorado2 {
+    
+    public static void main(String[] args) {
+		int N = 45, f=0;
+        int t1 = 1;
+        int t2;
+                
+		meojorado2 exponential = new meojorado2();
+		Stopwatch stopwatch = Stopwatch.createStarted();
+		for (int i = 1; i <= N; i++) {
+			try {
+				t2 = f;
+                f = t1 + f;
+                t1 = t2;
+                long fibonacci = t1;
+				System.out.println(i + " => " + fibonacci);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
+		System.out.println(String.format("Time elapsed: %d seconds", stopwatch.elapsed(TimeUnit.SECONDS)) + "\n");
+	}
+	
+	public long fibonacci(int n) throws Exception {
+        if (n < 0) {
+            throw new Exception("N can not be less than zero");
+        }
+        if (n <= 2) {
+            return 1;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+    
+ }
